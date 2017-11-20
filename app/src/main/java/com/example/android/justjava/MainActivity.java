@@ -25,22 +25,12 @@ public class MainActivity extends AppCompatActivity {
     public void increment(View view) {
         quantity++;
         display(quantity);
-        displayPrice(quantity * 5);
     }
 
     public void decrement(View view) {
 
         quantity--;
         display(quantity);
-        displayPrice(quantity * 5);
-    }
-
-    /**
-     * This method is called when the order button is clicked.
-     */
-    public void submitOrder(View view) {
-        display(quantity);
-        displayPrice(quantity * 5);
     }
 
     /**
@@ -52,10 +42,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method displays the given price on the screen.
+     * This method is called when the order button is clicked.
      */
-    private void displayPrice(int number) {
+    public void submitOrder(View view) {
+        String priceMessage = "Total: $ " + (quantity * 5);
+        priceMessage = priceMessage + "\nThank you"
+        displayMessage(priceMessage);
+    }
+
+    /**
+     * This method displays the given text on the screen.
+     */
+    private void displayMessage(String message) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+        priceTextView.setText(message);
     }
 }
